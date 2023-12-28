@@ -1,0 +1,10 @@
+.container{
+    position:fixed;
+    z-index: 1;
+    border: 2px solid black;
+    background-color: white;
+    padding: 20px;
+}
+#reason_err{
+    color: red;
+}

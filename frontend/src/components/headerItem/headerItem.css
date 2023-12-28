@@ -1,0 +1,11 @@
+.header-item>a{
+    text-decoration: none;
+    list-style: none;
+    color: whitesmoke;
+    font-size: large;
+    font-weight: bold;
+    margin: 5px;
+    margin-top: .5rem;
+    padding: 5px;
+    text-align: center;
+}
