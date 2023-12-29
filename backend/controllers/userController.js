@@ -34,9 +34,10 @@ const register = async (req, res) => {
     const text=`There, You have recently visited our website and entered your email. Please follow the given link to verify your email http://localhost:${process.env.PORT}/user/verify/`
     const userData =await  db.checkUserExists(req.body.email); 
     if (userData) {
-        res.render("register", {
-            error: "User Already exists"
-        });
+        // res.render("register", {
+        //     error: "User Already exists"
+        // });
+        res.status(409).json({success:false,message:'user already exists'})
         return;
     }else{
         try {
@@ -46,10 +47,11 @@ const register = async (req, res) => {
                 const password= req.body.password;
             const user=await db.createUser(name, email, password);
             sendVerifyEmail(req.body.name, req.body.email, user.id,subject,text)
-            res.render("register", {
-                // message:"User Created Successfully"
-                message:"check email for verification"
-            });
+            // res.render("register", {
+            //     // message:"User Created Successfully"
+            //     message:"check email for verification"
+            // });
+            res.status(200).json({success:true,message:'check email for verification'})
             return;
         } catch (error) {
             console.log(error);
